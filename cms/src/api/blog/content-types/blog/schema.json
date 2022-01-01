@@ -13,7 +13,9 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "unique": true
     },
     "content": {
       "type": "richtext"
@@ -34,6 +36,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::tag.tag"
+    },
+    "project": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::project.project",
+      "inversedBy": "blogs"
     }
   }
 }

@@ -13,7 +13,9 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "unique": true,
+      "required": true
     },
     "private": {
       "type": "boolean",
@@ -26,6 +28,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::technology.technology"
+    },
+    "blogs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::blog.blog",
+      "mappedBy": "project"
     }
   }
 }
