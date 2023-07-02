@@ -1,13 +1,37 @@
+'use client';
 // Template https://github.com/chronark/chronark.com.git
 
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Particles from './components/particles';
 import { navigation_map, socials } from './lib/constants';
+import { GlobeMethods } from 'react-globe.gl';
+import dynamic from 'next/dynamic';
+
+const Globe = dynamic(() => import('react-globe.gl'), {
+  //   loading: () => <p>Loading...</p>,
+  ssr: false,
+});
 
 export default function Home() {
+  const globeRef = useRef();
+  useEffect(() => {
+    if (globeRef.current) {
+      const globeMethods = globeRef.current as GlobeMethods;
+      const controls = globeMethods.controls();
+      controls.autoRotate = true;
+    }
+  }, []);
   return (
     <div className="flex flex-col items-center justify-center w-screen h-screen overflow-hidden bg-gradient-to-tl from-black via-zinc-600/20 to-black">
+      <div className="absolute -z-50">
+        <Globe
+          globeImageUrl={'//unpkg.com/three-globe/example/img/earth-night.jpg'}
+          backgroundColor="#000000"
+          animateIn
+          ref={globeRef}
+        />
+      </div>
       <nav className="my-16 animate-fade-in">
         <ul className="flex items-center justify-center gap-4">
           {navigation_map.map((item) => (
@@ -24,7 +48,7 @@ export default function Home() {
       <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />
       <Particles
         className="absolute inset-0 -z-10 animate-fade-in"
-        quantity={50}
+        quantity={10}
       />
       <h1 className="z-10 text-4xl text-transparent duration-1000 bg-white cursor-default text-edge-outline animate-title font-display sm:text-6xl md:text-9xl whitespace-nowrap bg-clip-text ">
         ArthurW404
