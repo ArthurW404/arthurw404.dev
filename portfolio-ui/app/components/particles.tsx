@@ -85,7 +85,6 @@ export default function Particles({
       const x = mousePosition.x - rect.left - w / 2;
       const y = mousePosition.y - rect.top - h / 2;
       const inside = x < w / 2 && x > -w / 2 && y < h / 2 && y > -h / 2;
-      console.log(x, y);
       if (inside) {
         mouse.current.x = x;
         mouse.current.y = y;
