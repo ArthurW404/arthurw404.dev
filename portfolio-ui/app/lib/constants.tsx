@@ -3,6 +3,7 @@ import React from 'react';
 
 export const navigation_map: Array<{ name: string; href: string }> = [
   // { name: "Projects", href: "/projects" },
+  { name: 'Blogs', href: '/blogs' },
   { name: 'Contact', href: '/contact' },
 ];
 
