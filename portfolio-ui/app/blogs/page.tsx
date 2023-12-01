@@ -1,8 +1,10 @@
+'use client';
 import Link from 'next/link';
 import { compareDesc, format, parseISO } from 'date-fns';
 import { allBlogs, Blog } from 'contentlayer/generated';
 import { Navigation } from '../components/nav';
 import NextImage from 'next/image';
+import { motion } from 'framer-motion';
 
 function PostCard(post: Blog) {
   return (
@@ -35,14 +37,31 @@ export default function Home() {
 
   return (
     <>
-      <Navigation />
+      {/* <Navigation />
       <div className=" pt-8 mt-12 flex h-screen flex-col">
-        <section className="mx-auto max-w-xl  h-1/6 flex flex-col">
+        <section className="mx-auto  h-1/6 flex flex-col">
           <h1 className="text-2xl font-black">Blogs</h1>
           <p>Hello World</p>
         </section>
         <section className="bg-white w-[120%] mx-0 min-h-full -rotate-2 absolute -left-12 top-48">
-          <div className="mx-auto max-w-xl pt-8 rotate-2">
+          <div className="mx-auto pt-8 rotate-2">
+            {posts.map((post, idx) => (
+              <PostCard key={idx} {...post} />
+            ))}
+          </div>
+        </section>
+      </div> */}
+      <Navigation />
+
+      <div className="mx-auto flex flex-col justify-between h-screen">
+        <section className="mx-auto mt-12 pb-6 h-1/6 flex flex-col flex-grow-0">
+          <h1 className="text-2xl font-black">
+            Blogs
+          </h1>
+          <p>Hello World</p>
+        </section>
+        <section className="px-12 bg-white mx-0 min-h-full h-full flex-grow w-full">
+          <div className="pt-6 mx-auto max-w-xl">
             {posts.map((post, idx) => (
               <PostCard key={idx} {...post} />
             ))}

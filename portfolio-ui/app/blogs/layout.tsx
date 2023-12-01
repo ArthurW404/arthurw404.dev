@@ -12,5 +12,5 @@ export default function BlogsLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <section className={inter.className}>{children}</section>;
+  return <section className={`min-h-screen ${inter.className}`}>{children}</section>;
 }
